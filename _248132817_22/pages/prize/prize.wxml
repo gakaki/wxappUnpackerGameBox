@@ -1,0 +1,37 @@
+<form bindsubmit="getFormId" reportSubmit="true">
+    <view class="prize-box">
+        <view class="prize-body">
+            <label class="title">积分赛规则：</label>
+            <view class="item">
+                <view class="no">
+                    <label>1</label>
+                </view>
+                <view class="notes">
+                    <text>每天凌晨5点开奖，积分排行前50名都有奖励，开奖同时重置榜单并开始新一轮比赛。</text>
+                </view>
+            </view>
+            <view class="item">
+                <view class="no">
+                    <label>2</label>
+                </view>
+                <view class="notes">
+                    <text>领奖有效期为上期结算之后24小时内。</text>
+                </view>
+            </view>
+            <label class="title">挑战赛奖品：</label>
+            <view class="item">
+                <view class="no"></view>
+                <view class="notes">
+                    <text>第一名：20元
+          第二名：10元
+          第三名：5元
+          第4~10名：3元
+          第11~50名：1元
+        </text>
+                </view>
+            </view>
+        </view>
+        <label class="tip">如需了解详情请联系客服</label>
+        <button class="close" formType="submit" openType="contact">联系客服</button>
+    </view>
+</form>

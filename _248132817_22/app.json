@@ -1,0 +1,37 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/found/found",
+        "pages/ranking/ranking",
+        "pages/prize/prize",
+        "pages/activity/activity"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "游戏",
+                "iconPath": "images/single.png",
+                "selectedIconPath": "images/single_active.png"
+            },
+            {
+                "pagePath": "pages/found/found",
+                "text": "活动",
+                "iconPath": "images/found.png",
+                "selectedIconPath": "images/found_active.png"
+            }
+        ],
+        "color": "#000",
+        "selectedColor": "#000",
+        "borderStyle": "white"
+    },
+    "networkTimeout": {
+        "request": 10000
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "潘多拉游戏盒子",
+    "backgroundColor": "#fff",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": true
+}

@@ -1,0 +1,156 @@
+<view class="article-scroll">
+    <view class="my-top">
+        <view class="my-box">
+            <view class="my-img">
+                <image mode="aspectFill" src="{{userData.userInfo.avatarUrl}}"></image>
+            </view>
+            <view class="my-name">
+                <text class="text">{{userData.userInfo.nickName}}</text>
+                <text class="icon rgicon-nan"></text>
+            </view>
+            <view class="my-gold">
+                <view class="gold">
+                    <image mode="aspectFill" src="{{imgsrc}}icon_diamond.png"></image>
+                    {{userData.gold}}
+                </view>
+                <view class="point">
+                    <image mode="aspectFill" src="{{imgsrc}}icon_redEnvelope.png"></image>
+                    {{userData.redEnvelope}}
+                </view>
+                <view class="withdrawal">
+                    <button bindtap="openStore" class="~~ btn animate">
+                        <image mode="widthFix" src="{{imgsrc}}btn_withdrawal.png"></image>
+                    </button>
+                </view>
+            </view>
+            <view class="help">
+                <button class="~~ btn animate" openType="contact">
+                    <image mode="widthFix" src="{{imgsrc}}btn_help.png"></image>
+                </button>
+            </view>
+        </view>
+        <view class="my-bg"></view>
+        <view bindtap="openStore" class="sign-in">
+            <view class="bg animate">
+                <image mode="widthFix" src="{{imgsrc}}btn_sign_in.png"></image>
+            </view>
+        </view>
+        <view bindtap="openStore" class="store">
+            <view class="bg animate">
+                <image mode="widthFix" src="{{imgsrc}}btn_store.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="activity" wx:if="{{true}}">
+        <view bindtap="openActivity" class="notice-item animate" data-datas="{{item}}" data-id="{{item.id}}" data-jumpUrl="{{item.jumpUrl}}" wx:for="{{activityList}}" wx:key="*this">
+            <view class="title">{{item.title}}</view>
+            <view class="banner" wx:if="{{item.imageUrl}}">
+                <image class="img" src="{{item.imageUrl}}"></image>
+            </view>
+            <view class="content">{{item.content}}</view>
+        </view>
+    </view>
+    <ad unitId="adunit-cddfac0b15ee7095"></ad>
+    <view class="network " wx:if="{{network}}">
+        <image mode="aspectFill" src="../../images/network.png"></image>
+        <button bindtap="networkRestart" class="btn animate">点击刷新</button>
+    </view>
+</view>
+<view class="user-modal-box" wx:if="{{showAuthorize}}">
+    <view class="user-modal-body">
+        <label>Hi，你好！</label>
+        <button bindgetuserinfo="userInfoHandler" openType="getUserInfo" size="mini">
+            进入游戏盒子
+        </button>
+    </view>
+</view>
+<view class="daily-award" wx:if="{{showDailyAward}}">
+    <view class="bg">
+        <view class="banner">
+            <image mode="widthFix" src="{{imgsrc}}dailyAward/banner.png"></image>
+        </view>
+        <view class="dog">
+            <image mode="widthFix" src="{{imgsrc}}dailyAward/dog.png"></image>
+        </view>
+        <view class="daily-award-pnl">
+            <view class="daily-award-img" wx:for="1234567" wx:key="index">
+                <image mode="widthFix" src="{{imgsrc}}dailyAward/day{{index+1}}.png"></image>
+                <image mode="widthFix" src="{{imgsrc}}dailyAward/day_got.png" wx:if="{{index<(dailyAwardData.combo<6?dailyAwardData.combo:6)}}"></image>
+            </view>
+        </view>
+        <image catchtap="dailyAwardClaim" mode="widthFix" src="{{imgsrc}}dailyAward/get_btn.png" wx:if="{{!dailyAwardData.today}}"></image>
+        <image mode="widthFix" src="{{imgsrc}}dailyAward/got_btn.png" wx:if="{{dailyAwardData.today}}"></image>
+        <button catchtap="closeDailyAward" class="close-btn">
+            <image mode="widthFix" src="{{imgsrc}}invite/btn_close.png"></image>
+        </button>
+    </view>
+</view>
+<view class="lucky-man" wx:if="{{showLuckyMan}}">
+    <view class="bg">
+        <view class="banner">
+            <image mode="widthFix" src="{{imgsrc}}luckyMan/banner.png"></image>
+        </view>
+        <view class="daily-award-pnl">
+            <view class="daily-award-img" wx:for="123456789" wx:key="index">
+                <image mode="widthFix" src="{{imgsrc}}luckyMan/redEnvelope.png"></image>
+            </view>
+        </view>
+        <image catchtap="dailyAwardClaim" mode="widthFix" src="{{imgsrc}}luckyMan/btn_refresh.png"></image>
+        <button catchtap="closeDailyAward" class="close-btn">
+            <image mode="widthFix" src="{{imgsrc}}invite/btn_close.png"></image>
+        </button>
+    </view>
+</view>
+<view class="invite" wx:if="{{showInvite}}">
+    <view class="bg">
+        <button class="banner" openType="share">
+            <image mode="widthFix" src="{{imgsrc}}invite/banner.png"></image>
+        </button>
+        <view class="player-list">
+            <image class="player-list-bg" mode="widthFix" src="{{imgsrc}}invite/box_invite.png"></image>
+            <scroll-view class="player-scroll" scrollX="true">
+                <button class="share" openType="share" wx:for="{{inviteData.inviters}}" wx:key="*this">
+                    <image mode="widthFix" src="{{item.headimgurl}}" wx:if="{{item.headimgurl}}"></image>
+                    <image mode="widthFix" src="{{imgsrc}}invite/btn_invite.png" wx:else></image>
+                </button>
+            </scroll-view>
+        </view>
+        <view class="name">已邀请好友达到以下目标，即可领取红包</view>
+        <view class="name">（仅限微信用户）</view>
+        <image class="line" mode="widthFix" src="{{imgsrc}}invite/img_line.png"></image>
+        <view class="task">
+            <view class="task-item" wx:for="{{inviteData.redEnvelopes}}" wx:key="invitationCounts">
+                <form bindsubmit="submitInfo" data-type="task_click" reportSubmit="true">
+                    <view class="icon">
+                        <image mode="widthFix" src="{{imgsrc}}invite/red_envelope.png"></image>
+                    </view>
+                    <view class="item-content">
+                        <view class="left">
+                            <view class="tips">{{item.awardDesc}}</view>
+                            <view class="progress">（数量：{{inviteData.invitersNum>item.invitationCounts?item.invitationCounts:inviteData.invitersNum}}/{{item.invitationCounts}}个）</view>
+                        </view>
+                        <view class="right">
+                            <button bindtap="invitationClaim" class="complete" data-id="{{item.id}}" wx:if="{{item.state==0}}"></button>
+                            <image class="btn_img" mode="widthFix" src="{{imgsrc}}invite/can_get.png" wx:if="{{item.state==0}}"></image>
+                            <image class="btn_img" mode="widthFix" src="{{imgsrc}}invite/got.png" wx:if="{{item.state==1}}"></image>
+                            <image class="btn_img" mode="widthFix" src="{{imgsrc}}invite/can_not_get.png" wx:if="{{item.state==2}}"></image>
+                        </view>
+                    </view>
+                </form>
+            </view>
+        </view>
+        <button catchtap="closeInvite" class="close-btn">
+            <image mode="widthFix" src="{{imgsrc}}invite/btn_close.png"></image>
+        </button>
+    </view>
+</view>
+<view bindtap="closeAwardModel" class="awardMask" wx:if="{{showAwardModal}}"></view>
+<view class="awardModal {{showAwardModal?'show':''}}">
+    <view class="title">恭喜你获得了</view>
+    <view class="awardNum">{{awardData}}</view>
+    <view class="awardText">元</view>
+    <button class="confirm-btn" openType="share">炫耀一下</button>
+    <button catchtap="closeAwardModel" class="close-btn">
+        <image mode="widthFix" src="{{imgsrc}}invite/btn_close.png"></image>
+    </button>
+</view>

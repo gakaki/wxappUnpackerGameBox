@@ -1,0 +1,447 @@
+.top-box {
+    width: 100%;
+    height: 154rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: linear-gradient(#ffb91e,#f87f16);
+    color: #fff;
+}
+
+.top-box .top-face {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 40rpx;
+}
+
+.top-box .top-face image {
+    width: 140rpx;
+    height: 140rpx;
+}
+
+.top-box .top-content {
+    width: 380rpx;
+    height: 118rpx;
+    text-align: left;
+    padding: 18rpx 0 0 40rpx;
+    flex-direction: column;
+}
+
+.top-box .top-content .nickname {
+    font-size: 30rpx;
+    font-weight: bold;
+    padding-left: 10rpx;
+    max-width: 380rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.top-box .top-content .amount {
+    font-size: 24rpx;
+    display: flex;
+    flex-direction: row;
+    line-height: 44rpx;
+    padding-top: 15rpx;
+}
+
+.top-box .amount image {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.top-box .amount label {
+    margin: auto 20rpx auto 10rpx;
+}
+
+.top-box .top-btn {
+    width: 120rpx;
+    text-align: center;
+    padding-top: 20rpx;
+}
+
+.top-box .top-btn image {
+    width: 80rpx;
+    height: 80rpx;
+    margin: auto;
+}
+
+.top-box .top-btn label {
+    font-size: 20rpx;
+    display: block;
+}
+
+.btn_goback {
+    position: fixed;
+    top: 700rpx;
+    right: 4rpx;
+    width: 140rpx;
+    height: 140rpx;
+}
+
+.btn_goback image {
+    width: 140rpx;
+    height: 140rpx;
+}
+
+.main-box {
+    position: relative;
+    width: 100%;
+    display: block;
+    margin-top: 154rpx;
+    margin-bottom: 105rpx;
+    background: #fff;
+}
+
+.ranking-box {
+    width: 100%;
+    display: flex;
+    padding: 0 15rpx;
+    box-sizing: border-box;
+}
+
+.ranking-body {
+    position: relative;
+    width: 50%;
+    margin: 0 5rpx;
+}
+
+.ranking-body .bg {
+    width: 100%;
+}
+
+.ranking-body .text {
+    position: absolute;
+    display: block;
+    bottom: 20rpx;
+    left: 0;
+    width: 100%;
+    height: 110rpx;
+    text-align: center;
+}
+
+.ranking-body .text .title {
+    height: 70rpx;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    color: #F87F16;
+}
+
+.ranking-body .text .title .num {
+    font-size: 70rpx;
+    margin: 0 10rpx -14rpx 10rpx;
+}
+
+.ranking-body .text .period {
+    height: 34rpx;
+    line-height: 40rpx;
+    color: #A9A9A9;
+    font-size: 24rpx;
+    overflow: hidden;
+}
+
+.ranking-img {
+    position: relative;
+    display: block;
+}
+
+.ranking-img image {
+    width: 100%;
+}
+
+.nav-take {
+    width: 100%;
+    height: 118rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #fff;
+}
+
+.nav-take navigator {
+    margin: auto;
+    height: 100rpx;
+}
+
+.nav-take image {
+    width: 300rpx;
+    height: 100rpx;
+}
+
+.nav-take button {
+    width: 300rpx;
+    height: 100rpx;
+}
+
+.nav-bottom {
+    width: 100%;
+    height: 104rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #F87F16;
+}
+
+.nav-bottom button,.nav-bottom navigator {
+    width: 25%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    line-height: 1;
+}
+
+.nav-bottom label {
+    display: block;
+    color: #FFF;
+    height: 30rpx;
+    line-height: 30rpx;
+    font-size: 20rpx;
+}
+
+.nav-bottom image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.takeprize-box {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    top: 0rpx;
+    left: 0rpx;
+    right: 0rpx;
+    bottom: 0rpx;
+    z-index: 11;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.6);
+}
+
+.takeprize-box .takeprize-body {
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 600rpx;
+    height: 796rpx;
+}
+
+.takeprize-body image.bg {
+    width: 600rpx;
+    height: 796rpx;
+    z-index: 1;
+}
+
+.takeprize-body .prize {
+    position: absolute;
+    left: 220rpx;
+    top: 370rpx;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 160rpx;
+    height: 140rpx;
+    z-index: 2;
+    color: #fff;
+    font-weight: bold;
+}
+
+.takeprize-body label.num {
+    font-size: 80rpx;
+}
+
+.takeprize-body label.unit {
+    font-size: 40rpx;
+    margin: 0 0 15rpx 4rpx;
+}
+
+.takeprize-body button {
+    position: absolute;
+    left: 160rpx;
+    bottom: 20rpx;
+    width: 291rpx;
+    height: 100rpx;
+    z-index: 2;
+}
+
+.takeprize-body image.btn {
+    width: 291rpx;
+    height: 100rpx;
+}
+
+.popranking-box {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    top: 0rpx;
+    left: 0rpx;
+    right: 0rpx;
+    bottom: 0rpx;
+    z-index: 11;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.6);
+}
+
+.popranking-box .popranking-body {
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 700rpx;
+    height: 1050rpx;
+}
+
+.popranking-body .top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 700rpx;
+    height: 278rpx;
+    z-index: 1;
+}
+
+.popranking-body .top image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 700rpx;
+    height: 278rpx;
+    z-index: 0;
+}
+
+.popranking-body .top label {
+    position: absolute;
+    top: 190rpx;
+    left: 260rpx;
+    z-index: 1;
+    color: #ffffff;
+}
+
+.popranking-body .items-box {
+    position: absolute;
+    top: 250rpx;
+    left: 38rpx;
+    background: #fff;
+    border: 10rpx solid #efefef;
+    width: 600rpx;
+    height: 700rpx;
+    border-radius: 10rpx;
+    z-index: 0;
+}
+
+.popranking-body .items-scroll {
+    margin: 0;
+    height: 610rpx;
+}
+
+.popranking-body .item {
+    width: 100%;
+    height: 86rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #737373;
+    font-size: 24rpx;
+}
+
+.popranking-body .item .sub {
+    display: block;
+    width: 100%;
+    line-height: 66rpx;
+    padding: 10rpx 0;
+}
+
+.popranking-body .item .sort {
+    width: 100rpx;
+    text-align: center;
+    margin-right: 6rpx;
+    float: left;
+}
+
+.popranking-body .item .icon-face {
+    width: 66rpx;
+    height: 66rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    float: left;
+}
+
+.popranking-body .icon-face image {
+    width: 66rpx;
+    height: 66rpx;
+}
+
+.popranking-body .item .nickname {
+    margin: auto 0 auto 20rpx;
+    max-width: 230rpx;
+    font-weight: bold;
+    text-align: left;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.popranking-body .item .score {
+    max-width: 180rpx;
+    float: right;
+    text-align: right;
+    margin-right: 8rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.popranking-body .item .line {
+    width: 68%;
+    height: 1rpx;
+    display: block;
+    border-bottom: 1rpx solid #ededed;
+    align-self: flex-end;
+}
+
+.popranking-body .item_last {
+    text-align: center;
+}
+
+.popranking-body .loading {
+    margin: 2rpx auto;
+    width: 200rpx;
+    align-self: center;
+}
+
+.popranking-body .myself {
+    background: #FA9419;
+    color: #fff;
+    box-shadow: 0 0 10rpx 0 #888888;
+    margin: 5rpx -10rpx 0 -10rpx;
+    width: 620rpx;
+}
+
+.popranking-body .bottom-btn {
+    position: absolute;
+    top: 980rpx;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.popranking-body button.img {
+    position: relative;
+    margin: auto;
+    width: 221rpx;
+    height: 76rpx;
+}
+
+.popranking-body image.btn {
+    width: 221rpx;
+    height: 76rpx;
+}

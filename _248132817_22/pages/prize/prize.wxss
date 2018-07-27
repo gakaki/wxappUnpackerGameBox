@@ -1,0 +1,76 @@
+.prize-box {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    top: 0rpx;
+    left: 0rpx;
+    right: 0rpx;
+    bottom: 0rpx;
+    display: block;
+    text-align: center;
+    box-sizing: border-box;
+    background: #783C9E;
+    color: #fff;
+    padding: 0 40rpx;
+    font-size: 28rpx;
+}
+
+.prize-box .prize-body {
+    width: 100%;
+    text-align: left;
+}
+
+.prize-body .title {
+    font-size: 34rpx;
+    font-weight: bold;
+}
+
+.prize-body .item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border-bottom: 3rpx dashed #A166C4;
+    margin-bottom: 10rpx;
+    padding: 10rpx 0;
+}
+
+.prize-body .item .no {
+    display: block;
+    width: 60rpx;
+    min-height: 80rpx;
+    margin-right: 20rpx;
+}
+
+.prize-body .item .no label {
+    display: block;
+    width: 60rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    border-radius: 50%;
+    background: #fff;
+    color: #783C9E;
+}
+
+.prize-body .item .notes {
+    text-align: left;
+    line-height: 50rpx;
+}
+
+.prize-box .tip {
+    width: 100%;
+    display: block;
+    margin: 30rpx auto;
+    color: #EEBA81;
+    text-align: center;
+}
+
+.prize-box .close {
+    width: 290rpx;
+    height: 76rpx;
+    line-height: 76rpx;
+    background: #fff;
+    color: #783C9E;
+    border-radius: 40rpx;
+}

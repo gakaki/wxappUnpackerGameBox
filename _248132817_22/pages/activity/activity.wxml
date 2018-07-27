@@ -1,0 +1,71 @@
+<button openType="share" wx:if="{{status==1}}">
+    <image class="share-btn-icon" mode="widthFix" src="../../images/share-btn.png"></image>
+</button>
+<view class="activity" wx:if="{{!network}}">
+    <view class="banner" wx:if="{{status==4}}">
+        <image class="img" mode="widthFix" src="{{nowActivityData.imageUrl}}"></image>
+    </view>
+    <view class="title" wx:if="{{status==4}}">{{nowActivityData.title}}</view>
+    <view class="sub-title" wx:if="{{status==1}}">{{nowActivityData.subhead}}</view>
+    <view class="money" wx:if="{{status==1}}">
+        <view class="text">
+            <text>{{'￥'+balance}}</text>
+            <text>{{canWithDraw?'可提现':isFirstTransferOut?'(最低￥0.3可提现)':'(最低￥1可提现)'}}</text>
+        </view>
+        <view bindtap="withdraw" class="go {{canWithDraw?'':'disabled'}}">提现</view>
+    </view>
+    <view class="item" wx:if="{{status==1}}">
+        <view class="item-title">开始找红包</view>
+        <view class="item-content">
+            <view class="game">
+                <view class="icon">
+                    <image class="img" mode="aspectFill" src="{{nowActivityData.gameIcon}}"></image>
+                </view>
+                <view class="name">{{nowActivityData.gameName}}</view>
+                <view bindtap="jumpGame" class="play animate" data-appid="{{nowActivityData.appId}}" data-channelcode="{{nowActivityData.channelCode}}">开始</view>
+            </view>
+        </view>
+    </view>
+    <block wx:if="{{status==4}}">
+        <import src="../../wxParse/wxParse.wxml"></import>
+        <view class="item">
+            <view class="item-title">适用规则</view>
+            <view class="item-content content-box">
+                <template is="wxParse" data="{{wxParseData:activityRule.nodes}}"></template>
+            </view>
+        </view>
+    </block>
+    <view class="item" wx:if="{{status==0}}">
+        <view class="no-content">
+            <image mode="widthFix" src="../../images/activity_adjust.png"></image>
+        </view>
+    </view>
+    <view class="item" wx:if="{{status==-1}}">
+        <view class="no-content">
+            <image mode="widthFix" src="../../images/activity_close.png"></image>
+        </view>
+    </view>
+    <view bindtap="openIndex" class="~~ back {{isIphonex?'iphonex':''}}" wx:if="{{status==1}}">返回首页</view>
+</view>
+<view class="tap-top hide" wx:if="{{status==1}}">
+    <view class="mask"></view>
+    <swiper autoplay="true" circular="true" class="text-swiper" interval="3000">
+        <swiper-item>
+            <view>王一鹏成功提现3元</view>
+        </swiper-item>
+        <swiper-item>
+            <view>小鹏成功提现3元</view>
+        </swiper-item>
+        <swiper-item>
+            <view>小明成功提现3元</view>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="network" wx:if="{{network}}">
+    <image mode="aspectFill" src="../../images/network.png"></image>
+    <button bindtap="networkRestart" class="btn animate">点击刷新</button>
+</view>
+<block wx:if="{{showModal}}">
+    <import src="../templets/pop.wxml"></import>
+    <template is="pop-modal" data="{{...modalItem}}"></template>
+</block>

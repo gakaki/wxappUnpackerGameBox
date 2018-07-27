@@ -1,0 +1,84 @@
+<view class="content">
+    <view class="single-top {{pullDown?'single-top-la':'single-top-bula'}}" wx:if="{{!network}}">
+        <view class="name">
+            欢迎
+            <text>{{userData.userInfo.nickName}}</text>
+        </view>
+        <view class="gold">
+            <image mode="widthFix" src="{{imgsrc}}icon_redEnvelope.png"></image>
+            <text>{{userData.redEnvelope}}</text>
+        </view>
+        <view class="point">
+            <image mode="widthFix" src="{{imgsrc}}icon_diamond.png"></image>
+            <text>{{userData.gold}}</text>
+        </view>
+        <view class="papal">
+            <image mode="widthFix" src="{{userTitleIcon}}"></image>
+            <text>{{userTitle}}</text>
+        </view>
+    </view>
+    <view class="content-scroll {{pullDown?'':'content-scroll-bula'}}" wx:if="{{!network}}">
+        <view class="weui-loadmore {{refreshData?'':'hide'}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">下拉刷新</view>
+        </view>
+        <view class="content-scroll-box">
+            <view class="game" wx:if="{{!network}}">
+                <view class="banner-box">
+                    <view class="banner-item-big" wx:if="{{index<1}}" wx:for="{{bannerList}}" wx:key="id">
+                        <navigator appId="{{item.appId}}" openType="navigate" path="{{item.url}}?{{item.params}}" target="miniProgram" version="release">
+                            <image bindtap="onClickBanner" class="img" data-appid="{{item.appId}}" data-id="{{item.id}}" mode="aspectFill" src="{{item.imageUrl}}"></image>
+                        </navigator>
+                        <view class="content">{{item.content}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="game" wx:for="{{gameList}}" wx:key="category.id">
+                <view class="game-item">
+                    <view class="title">
+                        <image mode="widthFix" src="{{item.category.iconUrl}}" wx:if="{{item.category.iconUrl!=''}}"></image>
+                        <text style="color:{{item.category.color}};">{{item.category.name}}</text>
+                    </view>
+                    <view class="game-list">
+                        <view class="game-list-item" wx:for="{{item.listGame}}" wx:for-index="game_index" wx:for-item="game" wx:key="id">
+                            <navigator appId="{{game.appId}}" openType="navigate" path="{{game.url}}?{{game.params}}" target="miniProgram" version="release">
+                                <image bindtap="onClickGame" class="icon" data-appid="{{game.appId}}" data-id="{{game.id}}" mode="aspectFill" src="{{game.iconUrl}}"></image>
+                            </navigator>
+                            <view class="name">{{game.name}}</view>
+                            <view class="battle-num">{{game.onlineDescribe||game.battleNum}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="banner-box" wx:if="{{index%2==1&&bannerList[index]}}">
+                    <view class="banner-item" wx:if="{{banner_index>index-1&&banner_index<index+2}}" wx:for="{{bannerList}}" wx:for-index="banner_index" wx:key="id">
+                        <navigator appId="{{item.appId}}" openType="navigate" path="{{item.url}}?{{item.params}}" target="miniProgram" version="release">
+                            <image bindtap="onClickBanner" class="img" data-appid="{{item.appId}}" data-id="{{item.id}}" mode="aspectFill" src="{{item.imageUrl}}"></image>
+                        </navigator>
+                        <view class="content">{{item.content}}</view>
+                    </view>
+                </view>
+            </view>
+            <ad unitId="adunit-cddfac0b15ee7095"></ad>
+            <view class="weui-loadmore {{isLoad?'':'hide'}}">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+        </view>
+    </view>
+    <view class="network" wx:if="{{network}}">
+        <image mode="aspectFill" src="../../images/network.png"></image>
+        <button bindtap="networkRestart" class="btn animate">点击刷新</button>
+    </view>
+</view>
+<button class="~~ share {{taskTips?'share-taskTips':''}}" openType="share">
+    <image mode="widthFix" src="../../images/share_btn_100x162.png"></image>
+</button>
+<view bindtap="hideSignModal" catchtouchmove="{{catchMove}}" class="signin-mask" wx:if="{{getShareCoin}}"></view>
+<view class="user-modal-box" wx:if="{{showAuthorize}}">
+    <view class="user-modal-body">
+        <label>Hi，你好！</label>
+        <button bindgetuserinfo="userInfoHandler" openType="getUserInfo" size="mini">
+            进入游戏盒子
+        </button>
+    </view>
+</view>

@@ -1,0 +1,183 @@
+<form bindsubmit="getFormId" reportSubmit="true">
+    <view class="top-box fixed-top z10">
+        <view class="top-face">
+            <image mode="scaleToFill" src="{{userInfo.avatarUrl}}" wx:if="{{userInfo.avatarUrl}}"></image>
+            <image mode="scaleToFill" src="/images/default_pic.png" wx:else></image>
+        </view>
+        <view class="top-content">
+            <view class="nickname">{{userInfo.nickName}}</view>
+            <view class="amount">
+                <image class="diamond" mode="scaleToFill" src="/images/diamond.png"></image>
+                <view>
+                    <label class="diamond">{{userAsset.diamond}}</label>
+                    <label>|</label>
+                    <label class="money">{{userAsset.gold}}</label>
+                </view>
+            </view>
+        </view>
+        <navigator appId="{{game.appId}}" class="top-btn" openType="navigate" path="/page/index/index?accountid={{userInfo.openId}}&{{game.params}}" target="miniProgram">
+            <image src="/images/sync_game.png"></image>
+            <label>同步排位信息</label>
+        </navigator>
+    </view>
+    <view class="main-box">
+        <view class="ranking-box">
+            <view class="ranking-body">
+                <image class="bg" mode="widthFix" src="/images/last_ranking_bg.png"></image>
+                <view class="text">
+                    <view class="title">
+                        <label>第</label>
+                        <label class="num">{{userRanking.lastTop}}</label>
+                        <label>名</label>
+                    </view>
+                    <view class="period">{{userRanking.lastPeriod}}</view>
+                </view>
+            </view>
+            <view class="ranking-body">
+                <image class="bg" mode="widthFix" src="/images/this_ranking_bg.png"></image>
+                <view class="text">
+                    <view class="title">
+                        <label>第</label>
+                        <label class="num">{{userRanking.thisTop}}</label>
+                        <label>名</label>
+                    </view>
+                    <view class="period">{{userRanking.thisPeriod}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="ranking-img">
+            <image mode="widthFix" src="https://mg.viplegaogame.com/images/ranking_img.png"></image>
+        </view>
+        <view class="nav-take">
+            <button bindtap="showTakePrizeBox" class="img" formType="submit" plain="true">
+                <image mode="widthFix" src="/images/btn_take.png"></image>
+            </button>
+            <navigator appId="{{game.appId}}" class="btn-play" openType="navigate" path="/page/index/index?accountid={{userInfo.openId}}&{game.params}}" target="miniProgram">
+                <image mode="widthFix" src="/images/btn_play.png"></image>
+            </navigator>
+        </view>
+    </view>
+    <button bindtap="goBack" class="btn_goback img z10" formType="submit" plain="true">
+        <image mode="widthFix" src="/images/btn_back.png"></image>
+    </button>
+    <view class="nav-bottom fixed-bottom z10">
+        <button bindtap="showLastBox" class="img" formType="submit" plain="true">
+            <image mode="widthFix" src="/images/btn_chart_bg.png"></image>
+            <label>上期排行榜</label>
+        </button>
+        <button bindtap="showThisBox" class="img" formType="submit" plain="true">
+            <image mode="widthFix" src="/images/btn_list_bg.png"></image>
+            <label>本期排行榜</label>
+        </button>
+        <button class="img" formType="submit" openType="share" plain="true">
+            <image mode="widthFix" src="/images/btn_share_bg.png"></image>
+            <label>分享</label>
+        </button>
+        <navigator class="img" url="../prize/prize">
+            <image mode="widthFix" src="/images/btn_rule_bg.png"></image>
+            <label>规则</label>
+        </navigator>
+    </view>
+    <view bindtap="hideBox" class="takeprize-box" data-view="takePrize" hidden="{{takePrize.hideBox}}">
+        <view class="takeprize-body">
+            <image class="bg" src="/images/takeprize_bg.png"></image>
+            <view class="prize">
+                <label class="num">{{takePrize.num}}</label>
+                <label class="unit">{{takePrize.unit}}</label>
+            </view>
+            <button bindtap="takePrize" class="img" formType="submit" plain="true">
+                <image class="btn" src="/images/btn_takeprize.png"></image>
+            </button>
+        </view>
+    </view>
+    <view class="popranking-box" hidden="{{lastRanking.hideBox}}">
+        <view class="popranking-body">
+            <view class="top">
+                <image src="/images/top_prize_bg.png"></image>
+                <label>上期排行榜</label>
+            </view>
+            <view class="items-box">
+                <scroll-view enableBackToTop scrollY bindscrolltolower="loadLastRanking" class="items-scroll">
+                    <view class="item" wx:for="{{lastRanking.list}}" wx:key="{{item.top}}">
+                        <view class="sub">
+                            <label class="sort red">{{index+1}}</label>
+                            <view class="icon-face">
+                                <image mode="scaleToFill" src="{{item.headimgurl}}" wx:if="{{item.headimgurl}}"></image>
+                                <image mode="scaleToFill" src="/images/default_pic.png" wx:else></image>
+                            </view>
+                            <view class="nickname">{{item.nickName}}</view>
+                            <view class="score light-gray">{{item.score}}分</view>
+                        </view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="item-last" wx:if="{{lastRanking.loading}}">
+                        <view class="loading">
+                            <image mode="center" src="/images/loading.gif" style="width:200rpx;height:50rpx"></image>
+                        </view>
+                    </view>
+                </scroll-view>
+                <view class="item myself">
+                    <view class="sub">
+                        <label class="sort">{{userRanking.lastTop}}</label>
+                        <view class="icon-face">
+                            <image mode="scaleToFill" src="{{userInfo.avatarUrl}}" wx:if="{{userInfo.avatarUrl}}"></image>
+                            <image mode="scaleToFill" src="/images/default_pic.png" wx:else></image>
+                        </view>
+                        <view class="nickname">{{userInfo.nickName}}</view>
+                        <view class="score">{{userRanking.lastScore}}分</view>
+                    </view>
+                </view>
+            </view>
+            <view class="bottom-btn">
+                <button bindtap="hideBox" class="img" data-view="lastRanking" formType="submit" plain="true">
+                    <image class="btn" src="/images/btn_close.png"></image>
+                </button>
+            </view>
+        </view>
+    </view>
+    <view class="popranking-box" hidden="{{ranking.hideBox}}">
+        <view class="popranking-body">
+            <view class="top">
+                <image src="/images/top_prize_bg.png"></image>
+                <label>本期排行榜</label>
+            </view>
+            <view class="items-box">
+                <scroll-view enableBackToTop scrollY bindscrolltolower="loadTopRanking" class="items-scroll">
+                    <view class="item" wx:for="{{ranking.list}}" wx:key="{{item.top}}">
+                        <view class="sub">
+                            <label class="sort red">{{index+1}}</label>
+                            <view class="icon-face">
+                                <image mode="scaleToFill" src="{{item.headimgurl}}" wx:if="{{item.headimgurl}}"></image>
+                                <image mode="scaleToFill" src="/images/default_pic.png" wx:else></image>
+                            </view>
+                            <view class="nickname">{{item.nickName}}</view>
+                            <view class="score light-gray">{{item.score}}分</view>
+                        </view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="item-last" wx:if="{{ranking.loading}}">
+                        <view class="loading">
+                            <image mode="center" src="/images/loading.gif" style="width:200rpx;height:50rpx"></image>
+                        </view>
+                    </view>
+                </scroll-view>
+                <view class="item myself">
+                    <view class="sub">
+                        <label class="sort">{{userRanking.thisTop}}</label>
+                        <view class="icon-face">
+                            <image mode="scaleToFill" src="{{userInfo.avatarUrl}}" wx:if="{{userInfo.avatarUrl}}"></image>
+                            <image mode="scaleToFill" src="/images/default_pic.png" wx:else></image>
+                        </view>
+                        <view class="nickname">{{userInfo.nickName}}</view>
+                        <view class="score">{{userRanking.thisScore}}分</view>
+                    </view>
+                </view>
+            </view>
+            <view class="bottom-btn">
+                <button bindtap="hideBox" class="img" data-view="ranking" formType="submit" plain="true">
+                    <image class="btn" src="/images/btn_close.png"></image>
+                </button>
+            </view>
+        </view>
+    </view>
+</form>

@@ -1,0 +1,72 @@
+<template name="pop">
+    <view class="pop-box">
+        <view class="pop login">
+            <text class="text">Hi，你好！</text>
+            <button bindgetuserinfo="userInfoHandler" class="~~ pop-btn animate" lang="zh_CN" openType="getUserInfo">进入潘多拉游戏盒子</button>
+            <image mode="widthFix" src="../../images/login_pop_bg.png"></image>
+        </view>
+    </view>
+</template>
+<template name="rpop">
+    <view class="pop-box">
+        <view class="pop login">
+            <text class="text">Hi，你好！</text>
+            <button bindgetuserinfo="RuserInfoHandler" class="~~ pop-btn animate" lang="zh_CN" openType="getUserInfo">进入潘多拉游戏盒子</button>
+            <image class="" mode="widthFix" src="../../images/login_pop_bg.png"></image>
+        </view>
+    </view>
+</template>
+<template name="pop-close">
+    <view class="pop-box">
+        <view class="pop">
+            <text class="text">Hi，你好！</text>
+            <view bindtap="" class="~~ pop-btn animate">进入潘多拉游戏盒子</view>
+            <view class="~~ close-btn rgicon-cl animate"></view>
+        </view>
+    </view>
+</template>
+<template name="task-pop">
+    <view bindtap="closeTaskModal" class="pop-box {{show?'':'hide'}}">
+        <view class="pop">
+            <text class="title">领取成功</text>
+            <image class="img" mode="aspectFill" src="{{imgsrc+taskImg}}" wx:if="{{taskImg}}"></image>
+            <text class="h1" wx:if="{{getall}}">所有任务奖励领取完成</text>
+            <text class="text">{{text}}</text>
+            <view catchtap="getNextTask" class="~~ pop-btn animate" data-id="{{nextid}}" wx:if="{{hasnext}}">领取下一个任务</view>
+            <view catchtap="closeTaskModal" class="~~ pop-btn animate" wx:if="{{!hasnext}}">关闭</view>
+        </view>
+    </view>
+</template>
+<template name="game-pop">
+    <view bindtap="closeTaskModal" class="pop-box {{show?'':'hide'}}">
+        <view class="pop">
+            <text class="title">{{text1}}</text>
+            <text class="text">{{text2}}</text>
+            <view catchtap="goToGame" class="~~ pop-btn animate" data-appid="{{gameAppId}}" data-giftname="{{giftName}}">前往打开</view>
+            <view catchtap="closeGiftModal" class="~~ close-btn rgicon-cl animate"></view>
+        </view>
+    </view>
+</template>
+<template name="pop-modal">
+    <view class="pop-box">
+        <view class="pop">
+            <text class="text">{{modalContent}}</text>
+            <view bindtap="modalConfirm" class="~~ pop-btn animate" data-type="{{modalFuncType}}">{{modalOkText}}</view>
+        </view>
+    </view>
+</template>
+<template name="pop-textmodal">
+    <view class="pop-box">
+        <view class="pop">
+            <text class="title">{{modalTitle}}</text>
+            <text class="text" wx:for="{{modalContent}}" wx:key="{{index}}">{{item}}</text>
+            <view bindtap="modalConfirm" class="~~ pop-btn animate" data-type="{{modalFuncType}}">{{modalOkText}}</view>
+        </view>
+    </view>
+</template>
+<template name="invite">
+    <view class="invite-box">
+        <button bindgetuserinfo="userInfoHandler" class="invite-btn" lang="zh_CN" openType="getUserInfo">进入房间</button>
+        <image class="invite-img" mode="aspectFill" src="../../images/gogo.jpg"></image>
+    </view>
+</template>
